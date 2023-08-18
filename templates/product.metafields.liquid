@@ -1,0 +1,9 @@
+{% layout none %}
+{
+  "metafields": {
+  {% for metafield in product.metafields.spr.reviews %}
+    "{{ metafield | first  }}" :  "{{ metafield | last }}"{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+}
+
+{{product.metafields.spr.reviews}}

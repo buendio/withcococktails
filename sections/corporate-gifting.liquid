@@ -1,0 +1,103 @@
+<div class="Container">
+  <header class="PageHeader">
+    <div class="SectionHeader SectionHeader--center">
+      <h1 class="SectionHeader__Heading Heading u-h1">{{ page.title }}</h1>      
+      <h3>Teams | Clients | Colleagues</h3>
+
+    </div>
+  </header>
+
+  <div class="PageContent PageContent--narrow">
+    <div class="Rte">
+      {{- page.content -}}
+
+      <p>WithCo bulk gifting & pricing makes holiday gifting a no brainer. Whether you’ve got 50 or 500 people on your list, check them all off in a single step. Fill out in the information below and we’ll be in touch within 24 hours.</p>
+      {%- form 'contact', class: 'Form Form--spacingTight' -%}
+        {%- if form.posted_successfully? -%}
+          <p class="Alert Alert--success">{{ 'contact.form.successfully_sent' | t }}</p>
+        {%- endif -%}
+
+        {%- if form.errors -%}
+          <div class="Form__Alert Alert Alert--error">
+            <ul class="Alert__ErrorList">
+              {%- for field in form.errors -%}
+                {%- if field == 'form' -%}
+                  <li class="Alert__ErrorItem">{{ form.errors.messages[field] }}</li>
+                {%- else -%}
+                  <li class="Alert__ErrorItem"><strong>{{ form.errors.translated_fields[field] }}</strong> {{ form.errors.messages[field] }}</li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+<input type="hidden" name="contact[form]" value="Corporate Gifting Form">
+        <div class="Form__Group">
+          <div class="Form__Item">
+            <input type="text" class="Form__Input" name="contact[name]" aria-label="{{ 'contact.form.name' | t }}" placeholder="{{ 'contact.form.name' | t }}" required>
+            <label class="Form__FloatingLabel">{{ 'contact.form.name' | t }}</label>
+          </div>
+
+          <div class="Form__Item">
+            <input type="text" class="Form__Input" name="contact[companyname]" aria-label="CompanyName" placeholder="Company Name" required>
+            <label class="Form__FloatingLabel">Company Name</label>
+          </div>
+        </div>
+      
+        <div class="Form__Group">
+          <div class="Form__Item">
+            <input type="email" class="Form__Input" name="contact[email]" aria-label="{{ 'contact.form.email' | t }}" placeholder="{{ 'contact.form.email' | t }}" required>
+            <label class="Form__FloatingLabel">{{ 'contact.form.email' | t }}</label>
+          </div>
+          <div class="Form__Item">
+            <input type="tel" class="Form__Input" name="contact[phone]" aria-label="Phone" placeholder="Phone" required >
+            <label class="Form__FloatingLabel">Phone</label>
+          </div>       
+        </div>
+              <div class="Form__Group">
+          <div class="Form__Item">
+            <input type="number" class="Form__Input" name="contact[budget]" aria-label="Budget" placeholder="Budget Per Gift" required >
+            <label class="Form__FloatingLabel">Budget per gift</label>
+          </div>
+
+          <div class="Form__Item">
+            <input type="number" class="Form__Input" name="contact[numberofBottles]" aria-label="NumberofBottles" placeholder="Number of Bottles" required>
+            <label class="Form__FloatingLabel">Number of Bottles</label>
+          </div>
+        </div>
+<div class="Form__Group">
+          <div class="Form__Item">
+            <input id="date" type="date" class="Form__Input" name="contact[date]" value="" required placeholder="Event Date"  aria-label="date"/>
+            <label class="Form__FloatingLabel">Date of Event or Deadline</label>
+          </div>    
+        </div>
+
+        <div class="Form__Item">
+          <textarea name="contact[body]" cols="30" rows="10" class="Form__Textarea" aria-label="{{ 'contact.form.message' | t }}" placeholder="{{ 'contact.form.message' | t }}" required></textarea>
+          <label class="Form__FloatingLabel">{{ 'contact.form.message' | t }}</label>
+        </div>
+
+        <button type="submit" class="Form__Submit Button Button--primary Button--full">{{ 'contact.form.submit' | t }}</button>
+      {%- endform -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Corporate Gifting",
+  "settings": [{
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "1200 x 1200px .png recommended"
+    }],
+  "blocks": []
+}
+{% endschema %}
+
+<style>
+  input[type="checkbox"]
+  {
+   margin-right:5px; 
+  }
+</style>

@@ -1,0 +1,388 @@
+<section class="Section {% unless section.settings.image %}Section--spacingNormal{% endunless %}">
+<div class="Container"> 
+  <header class="PageHeader">
+    <div class="SectionHeader SectionHeader--center">
+      <h1 class="SectionHeader__Heading Heading u-h1">{{ page.title }}</h1>     
+    </div>
+  </header>
+
+  <div class="PageContent PageContent--narrow Text--alignCenter page_content_style">
+    <div class="Rte">
+      <p>{{- page.content -}}</p>
+    </div>
+  </div>
+</div>
+  {%- capture section_content -%} 
+    <div class="FeatureText__ContentWrapper feature_background">
+      <div class="FeatureText__Content">
+        <header class="SectionHeader">
+          <h2 id="subscription-cta" class="SectionHeader__Heading Heading u-h1 Light-Text">{{ section.settings.heading }}</h2>
+    <hr/>
+          <div class="SectionHeader__Description Rte">
+          
+                <p>{{ section.settings.subheading }}: </p>
+            <ul> 
+              <li>{{ section.settings.content1 }}</li>
+              <li>{{ section.settings.content2 }}</li>
+              <li>{{ section.settings.content3 }}</li>
+              <li>{{ section.settings.content4 }}</li>
+            </ul>
+              </div>
+          <h2 class="SectionHeader__Heading Heading u-h1 Light-Text">{{ section.settings.title }}</h2>
+            <hr/>
+      
+          <div class="SectionHeader__Description Rte">
+                {{ section.settings.desctiption }}
+            <form action="">
+              {%- for block in section.blocks -%}
+                {% assign nameid = block.settings.flavor | replace: " ", "-" | downcase %}
+
+                <span>
+                  <input type="checkbox" id="{{ nameid }}" class="sflavor" value="{{ block.settings.flavor }}">
+                  <label for="{{ nameid }}">{{ block.settings.flavor }}</label><br>
+                </span>
+              {%- endfor -%}
+              <br>
+              {%  assign product = all_products[section.settings.product-handle] %}
+              <input type="hidden" class="pvariant" value="{{ product.first_available_variant.id }}">
+              <input type="hidden" class="pvariant_sub" value="{{ product.first_available_variant.selling_plan_allocations[0].selling_plan.id }}">
+              <span class="flavor_description">{{ section.settings.flavor_description }}</span>
+              <div class="messge_sec">
+              </div>
+              {% if product.first_available_variant.selling_plan_allocations[0].selling_plan.price_adjustments[0].value %}
+                {% assign sellprice = product.first_available_variant.selling_plan_allocations[0].selling_plan.price_adjustments[0].value %}
+                {% assign value_type = product.first_available_variant.selling_plan_allocations[0].selling_plan.price_adjustments[0].value_type %}
+              {%  else %}
+                {% assign sellprice = 0 %}
+              {% endif %}
+              <button type="button" class="Form__Submit Button Button--primary Button--full select_flavor">
+                Select Your Flavor - 
+                    {% if sellprice>0 %}
+                      {% if value_type=='percentage' %}
+                        {% assign totaltimes = 100 %}
+                        {%- assign saveamount = totaltimes| minus: sellprice -%} 
+                        {{product.price | times: saveamount | divided_by:100 | money_without_trailing_zeros }}
+                      {% else %}
+                        {{product.price | minus: sellprice |money_without_trailing_zeros }}
+                      {% endif %}
+                    {% else %}
+                      {{product.price | money_without_trailing_zeros }}
+                    {% endif %}
+              </button>
+            </form>
+              </div>
+          
+        </header>
+      </div>
+    </div>
+  {%- endcapture -%}
+
+  {%- capture section_image -%}
+    {%- if section.settings.image != blank -%}
+      <div class="FeatureText__ImageWrapper">
+        {%- include 'image-size', sizes: '400,600,700,800,900,1000,1200', image: section.settings.image -%}
+
+        <div class="AspectRatio" style="max-width: {{ section.settings.image.width }}px; --aspect-ratio: {{ section.settings.image.aspect_ratio }}">
+          {%- assign image_url = section.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+          <img class="Image--lazyLoad Image--slide{{ section.settings.image_position | capitalize }}" data-src="{{ image_url }}" data-expand="-200" data-widths="[{{ supported_sizes }}]" data-sizes="auto" alt="{{ section.settings.image.alt | escape }}">
+
+          <noscript>
+            <img src="{{ section.settings.image | img_url: '800x' }}" alt="{{ section.settings.image.alt | escape }}">
+          </noscript>
+        </div>
+      </div>
+    {%- endif -%}
+  {%- endcapture -%}
+
+  <div class="FeatureText {% if section.settings.image != blank %}FeatureText--withImage FeatureText--image{{ section.settings.image_position | capitalize }}{% endif %}">
+    {%- if section.settings.image_position == 'left' -%}
+      {{- section_image -}}
+      {{- section_content -}}
+    {%- else -%}
+      {{- section_content -}}
+      {{- section_image -}}
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Your Flavor with image",
+  "class": "shopify-section--bordered",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "1200 x 1200px .png recommended"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Whats Included"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Sub Heading",
+      "default": "Two Bottles"
+    },
+    {
+      "type": "richtext",
+      "id": "content1",
+      "label": "Text",
+      "default": "<p>(2) 16oz Bottles of your choisce</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "content2",
+      "label": "Text",
+      "default": "<p>10% off site-wide at anytime</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "content3",
+      "label": "Text",
+      "default": "<p>Access to Club perks and new flavor releases</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "content4",
+      "label": "Text",
+      "default": "<p>Free shipping (For first 500 club members)</p>"
+    },
+    {
+      "type": "header",
+      "content": "Flavor"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Select Your Flavor"
+    },
+    {
+      "type": "richtext",
+      "id": "desctiption",
+      "label": "Desctiption",
+      "default": "<p>Select up to two flavors to recive in your monthly shipment.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "flavor_description",
+      "label": "Flavor Desctiption",
+      "default": "<p>Select up to 2 flavors to receive in your monthly shipment. If you want 2 bottles of the same flavor then just select that one flavor below.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Product"
+    },
+    {
+      "type": "product",
+      "id": "product-handle",
+      "label": "Product-Handle"
+    },
+    {
+      "type": "number",
+      "id": "discount",
+      "label": "Subscription Discount",
+      "default": 20,
+      "info": "Enter Subscription Discount in %"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "flavor",
+      "name": "Flavor",
+      "settings": [
+        {
+          "type": "text",
+          "id": "flavor",
+          "label": "Flavor",
+          "default": "Bloody Mary"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Text",
+      "name": "Your Flavor with image",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .page_content_style{padding-left:20px;padding-right:20px}
+  .page_content_style p{font-size:20px;}
+  .feature_background{background:#000000;color:#fff;vertical-align: middle !important;}
+  .feature_background .FeatureText__Content{margin-right:0px !important;max-width:100% !important;}
+  .feature_background p{font-size:20px;margin-bottom:0px !Important;}
+  .feature_background li{font-size:16px !Important;line-height:18px;font-family: Abel,sans-serif;}
+   .feature_background li p{font-size:16px !Important;}
+  .feature_background form{margin-top: 20px;
+    font-size: 16px;}
+  .feature_background form span{display:block;margin-top:4px;margin-bottom:4px;font-family: Abel,sans-serif;}
+  .feature_background .SectionHeader__Description p{font-family: Abel,sans-serif;}
+  .flavor_description p{ font-size:13px; }
+  .feature_background input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: var(--form-background);
+  margin: 0;
+
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.01em solid #fff;
+    margin-right:10px;
+    margin-top:6px;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+
+  display: grid;
+  place-content: center;
+}
+
+.feature_background input[type="checkbox"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  transform: scale(0);
+  transform-origin: bottom left;
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--form-control-color);
+  /* Windows High Contrast Mode */
+  background-color: #fff;
+}
+
+ .feature_background input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+ .feature_background input[type="checkbox"]:focus {
+  outline: 0px !Important;
+}
+
+.feature_background input[type="checkbox"]:disabled {
+  --form-control-color: var(--form-control-disabled);
+
+  color: var(--form-control-disabled);
+  cursor: not-allowed;
+}
+  .feature_background input{float:left;margin-top:6px;}
+.error_flavor{background: #fff;
+    padding: 5px 20px;
+    color: #f00;}
+  @media (max-width:767px)
+  {
+    .feature_background form{text-align:left;}
+    .feature_background li{text-align:left}
+  }
+@media(min-width:767px) and (max-width:1200px)
+{
+#shopify-section-cocktail-club-include .AspectRatio{height:100%}
+#shopify-section-cocktail-club-include  .FeatureText--withImage{display:flex;}
+}
+  @media (min-width:1700px)
+{
+ #shopify-section-cocktail-club-include .AspectRatio{max-width:100% !important;} 
+}
+
+  @media(min-width:991px){
+
+.PageHeader {
+    margin: 30px 0;
+    margin-bottom: 0px;
+}
+    
+ .FeatureText--withImage .FeatureText__ContentWrapper {
+  
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+    
+
+    .FeatureText.FeatureText--withImage.FeatureText--imageLeft {
+    display: flex !important;
+    height: 790px !important;
+}
+    .SectionHeader__Description.Rte ul {
+    padding: 0px;
+    margin: 0px 20px;
+}
+
+   .FeatureText--withImage .FeatureText__ImageWrapper .Image--lazyLoaded.Image--slideLeft
+    {
+   
+    object-fit: cover;
+}
+ }
+
+  
+</style>
+<script>
+  jQuery(document).on("click",".select_flavor",function(){
+    let data = [];
+    let fl = [];
+    let item = {}
+    let v = jQuery(".pvariant").val();
+    let vs = jQuery(".pvariant_sub").val();
+    $('.sflavor').each(function () { 
+      var flavor = (this.checked ? $(this).val() : ""); 
+      if(flavor!=''){
+        fl.push(flavor);
+      }
+    });
+    if(fl.length==1 || fl.length==2){
+      let fr = fl.join(", ");
+      item['properties'] = {"Flavor":fr}
+      item['id'] = v;
+      item['quantity'] = 1;
+      item['selling_plan'] = vs;
+      data.push(item);
+      fetch('/cart/add.js', {
+      body: JSON.stringify({items:data}),
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json',
+        "Accept": "application/json"
+      },
+      method: "post"
+      }).then((response) => {
+      console.log("response", response);
+      return response.json();
+      }).then((json) => {
+        window.location.href = '/cart';
+      }).catch((err) => {
+        console.error(err)
+      });
+    }else if(fl.length<1){
+      $(".messge_sec").html("<div class='error_flavor'>Please select 1 flavor.</div>");
+      setTimeout(function(){ $(".error_flavor").remove(); }, 3000);
+    }else if(fl.length>2){
+      $(".messge_sec").html("<div class='error_flavor'>You can select only 2 flavor.</div>");
+      setTimeout(function(){ $(".error_flavor").remove(); }, 3000);
+    }
+  });
+</script>

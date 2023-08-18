@@ -1,0 +1,78 @@
+{
+  "sections": {
+    "main": {
+      "type": "product-template-multiple",
+      "blocks": {
+        "4e8d8ec8-1d3a-4721-a6fa-cf7b60103365": {
+          "type": "products",
+          "settings": {
+            "selected_product": "gingermule"
+          }
+        },
+        "ef1dab1b-fb69-4fd3-a64d-5662ec5e3930": {
+          "type": "products",
+          "settings": {
+            "selected_product": "hey-girl"
+          }
+        },
+        "fbd78acc-92da-4c84-895f-6d015de69a69": {
+          "type": "products",
+          "settings": {
+            "selected_product": "honey-sour"
+          }
+        },
+        "f1fec6a7-c08e-40d1-b6f4-f93193354a7d": {
+          "type": "products",
+          "settings": {
+            "selected_product": "bouquet"
+          }
+        },
+        "7bae4de4-d10b-48c5-b3b3-b108d1863229": {
+          "type": "products",
+          "settings": {
+            "selected_product": "agave-margarita"
+          }
+        },
+        "67da32e6-5fab-43c7-86f8-a2501fd2ebec": {
+          "type": "products",
+          "settings": {
+            "selected_product": "ellis-old-fashioned"
+          }
+        }
+      },
+      "block_order": [
+        "4e8d8ec8-1d3a-4721-a6fa-cf7b60103365",
+        "ef1dab1b-fb69-4fd3-a64d-5662ec5e3930",
+        "fbd78acc-92da-4c84-895f-6d015de69a69",
+        "f1fec6a7-c08e-40d1-b6f4-f93193354a7d",
+        "7bae4de4-d10b-48c5-b3b3-b108d1863229",
+        "67da32e6-5fab-43c7-86f8-a2501fd2ebec"
+      ],
+      "settings": {
+        "show_share_buttons": true,
+        "show_vendor": true,
+        "show_sku": false,
+        "description_below_add_to_cart": true,
+        "num_products": 2,
+        "show_color_swatch": false,
+        "show_color_carousel": false,
+        "show_quantity_selector": true,
+        "show_inventory_quantity": false,
+        "inventory_quantity_threshold": 0,
+        "show_price_in_button": false,
+        "show_payment_button": true,
+        "image_size": "large",
+        "stack_images": false,
+        "show_thumbnails": false,
+        "enable_image_zoom": true,
+        "tab_page_1_handle": "shipping-returns",
+        "tab_page_2_handle": "faqs",
+        "reviews_enabled": true,
+        "featured_image_size": "large"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

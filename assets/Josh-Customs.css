@@ -1,0 +1,327 @@
+.Drawer__Content {
+    height: calc(max(100% - var(--header-height), 100% - 80px));
+    max-height: calc(max(100% - var(--header-height), 100% - 80px));
+}
+
+.SidebarMenu .Heading
+{
+font-size:24px;  
+}
+
+.Product .ImageHero__VideoHolder iframe
+{
+  width: 100%;
+  height:100%;
+}
+
+body
+{
+    font-family: 'FoundersFrotesk';
+}
+
+.Product .ImageHero
+{
+ display:block; 
+}
+
+.no-padding
+{
+ padding:0px; 
+}
+
+.MegaMenu__Title
+{
+
+}
+
+.Cart__ShippingNotice
+{
+ text-align:center; 
+      font-size: 16px;
+    font-weight: 600;
+}
+
+.ProductForm__StockAlert::before
+{
+  background-color:#363c2b !important;
+}
+
+.MegaMenu__PushHeading
+{
+ margin-bottom:0px; 
+}
+
+#store-locator-title
+{
+  font-family: 'PPEditorial';
+    font-weight: 500;
+    font-style: normal;
+    color: #1c1b1b;
+    transition: color 0.2s ease-in-out;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+      margin: 50px 0;
+  display:block;
+  text-align:center;
+}
+
+.AnnouncementBar__Content a
+{
+ font-size: 18px; 
+  letter-spacing:1px;
+}
+
+.Testimonial__Logo
+{
+ margin:12px auto;
+  display:block;
+}
+
+.Testimonial__Logo, .TestimonialNav__Item
+{
+ max-width:100%;
+  max-height:80px;
+}
+
+.Testimonial__Content
+{
+ text-align: center;
+    font-size: 20px; 
+}
+
+.SectionHeader .SectionHeader__Heading 
+{
+ 	margin-top:0px; 
+}
+
+.SectionHeader .SectionHeader__Description
+{
+  margin-top:10px;
+}
+
+
+
+.Heading.Light-Text
+{
+ color:#fdfdfc !important; 
+}
+
+.Heading
+{
+   font-family: 'PPEditorial';
+}
+
+.SectionHeader__Heading 
+{
+  font-family: 'PPEditorial';
+    font-weight: 500;
+  font-size: 32px;
+  margin-bottom:5px;
+}
+
+
+
+.shopify-section--bordered+.shopify-section--bordered
+{
+ 	border-top:none; 
+}
+
+.Header
+{
+ background: rgba(255,255,255, 0.85 ); 
+}
+
+.spr-badge
+{
+ margin-top:4px; 
+}
+
+.spr-badge .spr-badge-caption
+{
+ 	display:none; 
+}
+
+.FeatureText--imageLeft .FeatureText .SectionHeader__Description
+{
+  margin-top:0px;
+}
+
+.Button--secondary, #shopify-product-reviews .spr-pagination-prev > a, #shopify-product-reviews .spr-pagination-next > a
+{
+      color: white;
+    border: none;
+}
+
+#section-161231979120d0eed4 .Button {    
+    border: none;
+}
+
+.Button--secondary::before, #shopify-product-reviews .spr-pagination-prev > a::before, #shopify-product-reviews .spr-pagination-next > a::before {
+    background-color: #c2a284;
+    transform-origin: right center;
+    transform: none;
+}
+
+.Button--primary, .shopify-payment-button__button--unbranded, #shopify-product-reviews .spr-summary-actions-newreview, #shopify-product-reviews .spr-button-primary:not(input) {
+    color: white;
+    border: none;
+}
+
+.Button--primary::before, .shopify-payment-button__button--unbranded::before, #shopify-product-reviews .spr-summary-actions-newreview::before, #shopify-product-reviews .spr-button-primary:not(input)::before {
+    background-color: #c2a284;
+}
+
+.quantity-button
+{
+	width:48px;
+  	height:48px;
+  	display:inline-block;
+  	border: 1px solid #454545;
+  	border-radius: 50%;
+  margin-right:10px;
+}
+
+.quantity-button.selected, .quantity-button:hover
+{
+background-color:#454545;
+  color:white;
+  
+}
+
+.quantity-button h3
+{
+    line-height: 48px;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    font-size: 1em;
+}
+
+.quantity-button.selected h3
+{
+  	font-weight:bold;
+}
+
+.groupsTable
+{
+  display:none;
+}
+
+.ProductForm
+{
+ margin-top:12px; 
+}
+
+.ProductMeta__PriceList
+{
+ margin-top:6px; 
+}
+
+.Drawer__Main #gs__toggle-box
+{
+ width:100%;
+  padding: 15px 30px;
+}
+
+.QuantitySelector
+{
+ margin-top:12px; 
+}
+
+
+@media screen and (min-width: 1008px)
+  {
+.shopify-section--bordered > .Section--spacingNormal {
+    
+}
+    .Slideshow--fullscreen .Split_Image .Slideshow__Image
+{
+ width:50%; 
+}
+    .Slideshow__Content--bottomRight, .Slideshow__Content--SplitBanner
+    {
+      text-align:left;
+      padding-left:54%;
+    }
+    .Slideshow__Content--bottomRight, .Slideshow__Content--SplitBanner  .ButtonGroup
+    {
+     display:block; 
+    }
+  }
+
+
+@media screen and (min-width: 1240px)
+ {
+.FeatureText--imageLeft .FeatureText__ContentWrapper {
+  padding-left:50px;
+  
+}
+ }
+
+@media screen and (min-width: 641px)
+{
+    .\31\/5--lap-and-up {
+    width: 20%;
+}
+
+  .SectionHeader .SectionHeader__SubHeading 
+{
+ 	margin-bottom:0px; 
+      font-size: 30px;
+}
+  
+.SectionHeader__Heading 
+{
+  font-family: 'PPEditorial';
+    font-weight: 500;
+  margin-bottom:5px;
+}
+
+  .Slideshow__Content .SectionHeader__Heading 
+{
+      font-size: 56px;
+}
+  
+  
+  .u-h6, .Rte h6
+  {
+   font-size:16px; 
+  }
+  
+  #store-locator-title
+{
+      font-size: 36px;
+}
+}
+
+@media screen and (max-width: 640px)
+{
+
+  .Testimonial__Logo
+{
+ margin:0px auto 16px;
+  display:block;
+}
+  
+.SectionHeader__Heading 
+{
+  font-size:24px;
+}
+ .PageHeader--withBackground
+  {
+    min-height:240px;
+  }
+
+.FeatureText--imageLeft {
+  flex-direction:column;
+}
+  
+    .FeatureText--withImage .FeatureText__ContentWrapper, .FeatureText--withImage .FeatureText__ImageWrapper {
+    display: block;
+    width: 100%;
+    vertical-align: middle;
+}
+}
+
+

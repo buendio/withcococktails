@@ -1,0 +1,153 @@
+<style>
+    .subscription_append .shopify-payment-button__button--unbranded:before{
+        background-color: #000000 !important;
+    }
+    .subscription_append .shopify-payment-button__button--unbranded:not([disabled]):hover{
+        color:#000000 !important;
+    }
+    .subscription_append .shopify-payment-button__button--unbranded{
+        margin-top:1rem;
+    }
+    span.check-icon+span {
+        padding-left: 10px;
+    }
+    .subscription-labels {
+        font-size: 15px;
+    }
+    .subscription_append{
+        margin-top:25px;
+    }
+    span.offer_amount {
+        display: block;
+        font-size: 15px;
+        text-transform: uppercase;
+    }
+    .bsub-widget__wrapper, .bsub-widget__group-discount-summary {
+        font-size: 20px;
+    }
+    .bsub-widget__text {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items:center;
+    }
+    .bsub-widget {
+        padding: 0 5px!important;
+        border: 0!important;
+        margin: 0 0 20px!important;
+    }
+        .bsub-widget__group-header {
+        display: none !important;
+    }
+    .bsub-widget__wrapper{
+        background-color:white;
+        border:none;
+    }
+    .bsub-widget__group{
+        border: 1px solid #e3e3e3;
+        margin-bottom:1rem;
+        padding:1rem;
+    }
+    .bsub-widget__wrapper{
+        padding:0;
+    }
+    .bsub-widget__group select{
+        width:100%;
+        margin:1rem 0;
+        border: 1px solid #e3e3e3;
+        padding: 0.5rem;
+    }
+    .bsub-widget__group-label {
+        height: 100%;
+        display: flex;
+        align-items: center;
+    
+    }
+    .bsub-widget__groups-container{
+        display:block;
+    }
+    .bsub-widget__group+.bsub-widget__group{
+        margin-left:0;
+    }
+    .bsub-widget__text{
+        padding-left:.5rem;
+    }
+    input:checked+.bsub-widget__plan-header, .bsub-widget__plan-header{
+        color:#1f271c;
+        background:transparent;
+        margin:0 !important;
+    }
+    .custom_price_subscribe {
+      display:none;
+    }
+</style>
+<div class="subscription_append"><!-- Bold Subscriptions Widget -->
+  <div class="bsub-widget__wrapper
+    ">
+    {% if section.settings.subscription_product.first_available_variant.selling_plan_allocations[0].selling_plan.price_adjustments[0].value %}
+      {% assign sellprice = section.settings.subscription_product.first_available_variant.selling_plan_allocations[0].selling_plan.price_adjustments[0].value %}
+      {% assign value_type = section.settings.subscription_product.first_available_variant.selling_plan_allocations[0].selling_plan.price_adjustments[0].value_type %}
+    {%  else %}
+      {% assign sellprice = 0 %}
+    {% endif %}
+    <!-- Selling Plan Groups (Purchase Options) -->
+    <div class="bsub-widget__groups-container">
+      
+
+      <!-- selling plan group radio -->
+        <div class="selling-plans-container">
+            
+                <div class="bsub-widget__group" data-bsub-selling-plan-group="" data-bsub-selling-plan-group-id="443f8160e8514d187603d97741c928a440bd9240">
+                <label class="bsub-widget__group-label">
+                <div class="bsub-widget__plan-header" style="margin-top: -15px;">
+                </div><input type="hidden" id="meta_price_list_info" value="$20"><div class="bsub-widget__text">
+                        {% if section.settings.subscription_title %}
+                            <span style="text-transform: capitalize;">{{ section.settings.subscription_title }}</span>
+                        {% endif %}
+                        <span class="bsub-widget__group-discount-summary custom_price_subscribe" data-bsub-group-discount-summary="">
+                          {% if sellprice>0 %}
+                            {% if value_type=='percentage' %}
+                              {% assign totaltimes = 100 %}
+                              {%- assign saveamount = totaltimes| minus: sellprice -%} 
+                              {{section.settings.subscription_product.price | times: saveamount | divided_by:100 | money_without_trailing_zeros }}
+                              <span class="offer_amount">Save  {{ sellprice }}%</span>
+                            {% else %}
+                              {{section.settings.subscription_product.price | minus: sellprice |money_without_trailing_zeros }}
+                              <span class="offer_amount">Save  ${{ sellprice }}</span>
+                            {% endif %}
+                          {% else %}
+                            {{section.settings.subscription_product.price | money_without_trailing_zeros }}
+                          {% endif %}
+                          
+                          
+                        </span>
+                    </div>
+                    <div class="bsub-widget__group-header">
+                    </div>
+                </label>
+                {% for block in section.blocks %}
+
+                  {% if block.settings.bullet!=blank %}
+                    <div class="subscription-labels">
+                      <span class="check-icon"><svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13 1L4.49978 9.49996L1 6" stroke="#000000" stroke-width="2" stroke-linecap="round"></path>
+                        </svg>
+                      </span>
+                      <span>{{ block.settings.bullet }}</span>
+                    </div>
+                   {% endif %}
+               
+                {% endfor %}
+                <a href="{{ section.settings.subscription_button_link }}" class="shopify-payment-button__button--unbranded Button--full">Subscribe now</a>                                                                                          	
+                </div>
+            
+			                                                                            
+    <!-- Render individual selling plans -->
+     
+
+        </div>
+      <!-- render One-time purchase option -->
+      
+    </div>
+  </div>
+</div>

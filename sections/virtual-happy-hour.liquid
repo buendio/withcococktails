@@ -1,0 +1,151 @@
+<div class="Container">
+  <header class="PageHeader">
+    <div class="SectionHeader SectionHeader--center">
+      <h1 class="SectionHeader__Heading Heading u-h1">{{ page.title }}</h1>
+    </div>
+  </header>
+
+  <div class="PageContent PageContent--narrow">
+    <div class="Rte">
+      {{- page.content -}}
+
+      {%- form 'contact', class: 'Form Form--spacingTight' -%}
+        {%- if form.posted_successfully? -%}
+          <p class="Alert Alert--success">{{ 'contact.form.successfully_sent' | t }}</p>
+        {%- endif -%}
+
+        {%- if form.errors -%}
+          <div class="Form__Alert Alert Alert--error">
+            <ul class="Alert__ErrorList">
+              {%- for field in form.errors -%}
+                {%- if field == 'form' -%}
+                  <li class="Alert__ErrorItem">{{ form.errors.messages[field] }}</li>
+                {%- else -%}
+                  <li class="Alert__ErrorItem"><strong>{{ form.errors.translated_fields[field] }}</strong> {{ form.errors.messages[field] }}</li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+
+        <div class="Form__Group">
+          <div class="Form__Item">
+            <input type="text" class="Form__Input" name="contact[name]" aria-label="{{ 'contact.form.name' | t }}" placeholder="{{ 'contact.form.name' | t }}" required>
+            <label class="Form__FloatingLabel">{{ 'contact.form.name' | t }}</label>
+          </div>
+
+          <div class="Form__Item">
+            <input type="email" class="Form__Input" name="contact[email]" aria-label="{{ 'contact.form.email' | t }}" placeholder="{{ 'contact.form.email' | t }}" required>
+            <label class="Form__FloatingLabel">{{ 'contact.form.email' | t }}</label>
+          </div>
+        </div>
+      
+        <div class="Form__Group">
+          <div class="Form__Item">
+            <input type="tel" class="Form__Input" name="contact[phone]" aria-label="Phone" placeholder="Phone" required >
+            <label class="Form__FloatingLabel">Phone</label>
+          </div>
+
+          <div class="Form__Item">
+            <input type="number" class="Form__Input" name="contact[numberofPeople]" aria-label="NumberofPeople" placeholder="Number of People" required>
+            <label class="Form__FloatingLabel">Number of People</label>
+          </div>
+        </div>
+      
+      <div class="Form__Item">
+            <input type="date" class="Form__Input" name="contact[date]" aria-label="Date" placeholder="Date" required>
+            <label class="Form__FloatingLabel">Virtual Happy Hour Date</label>
+          </div>
+      
+        <div class="Form__Item">
+          <label>Prefered Flavors</label>
+          <div style="margin-top:5px;"><input type="checkbox" name="contact[Flavors]" id="marg" value="Agave Margarita"><label for="marg">Agave Margarita</label></div>
+          <div style="margin-top:5px;"><input type="checkbox" name="contact[Flavors]" id="bouquet" value="Bouquet"><label for="bouquet">Bouquet</label></div>
+          <div style="margin-top:5px;"><input type="checkbox" name="contact[Flavors]" id="ellis" value="Ellis Old Fashioned"><label for="ellis">Ellis Old Fashioned</label></div>
+          <div style="margin-top:5px;"><input type="checkbox" name="contact[Flavors]" id="heygirl" value="Hey Girl"><label for="heygirl">Hey Girl</label></div>
+          <div style="margin-top:5px;"><input type="checkbox" name="contact[Flavors]" id="honey" value="Honey Sour"><label for="honey">Honey Sour</label></div>
+          <div style="margin-top:5px;"><input type="checkbox" name="contact[Flavors]" id="jackass" value="Jackass"><label for="jackass">Jackass</label></div>
+          <div style="margin-top:5px;"><input type="checkbox" name="contact[Flavors]" id="sweater" value="#sweaterweather"><label for="sweater">#sweaterweather</label></div>
+                    
+		</div>
+
+
+        <div class="Form__Item">
+          <textarea name="contact[body]" cols="30" rows="10" class="Form__Textarea" aria-label="{{ 'contact.form.message' | t }}" placeholder="{{ 'contact.form.message' | t }}" required></textarea>
+          <label class="Form__FloatingLabel">{{ 'contact.form.message' | t }}</label>
+        </div>
+
+        <button type="submit" class="Form__Submit Button Button--primary Button--full">{{ 'contact.form.submit' | t }}</button>
+      {%- endform -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Contact page",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Text field",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Name",
+          "default": "Custom field"
+        },
+        {
+          "type": "checkbox",
+          "id": "use_long_text",
+          "label": "Use long text",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "is_required",
+          "label": "Field is required",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "dropdown",
+      "name": "Dropdown",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Name",
+          "default": "Custom field"
+        },
+        {
+          "type": "text",
+          "id": "values",
+          "label": "Values",
+          "info": "Separate each value by a comma.",
+          "default": "value 1, value 2, value 3"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "text",
+        "settings": {
+          "title": "Your phone (optional)"
+        }
+      }
+    ]
+  }
+}
+{% endschema %}
+
+<style>
+  input[type="checkbox"]
+  {
+   margin-right:5px; 
+  }
+</style>

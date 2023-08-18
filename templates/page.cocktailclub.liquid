@@ -1,0 +1,64 @@
+<style>
+  .bgimage {
+  width:100%;
+  height:500px;
+  background: url('{{ 'the-cocktail-club.jpg' | asset_url }}');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:cover;
+  background-attachment: fixed;
+    text-align:center;
+}
+.bgimage h2 {
+  color:white;
+  font-size:2.5em;
+  font-weight:600;
+  margin-top:50px;
+  text-align:center;
+  margin-top:150px !important;
+}
+</style>
+
+
+
+<section class="bgimage">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+              <header class="SectionHeader" style="visibility: inherit; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">
+                <h2 class="SectionHeader__Heading SectionHeader__Heading--emphasize Heading u-h1">Join the Cocktail Club</h2>
+                <h3 class="SectionHeader__SubHeading Heading u-h6">FEATURED SEASONAL COCKTAIL</h3>
+                <div class="SectionHeader__ButtonWrapper" style="visibility: inherit; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">
+                <div class="ButtonGroup ButtonGroup--spacingSmall "><a href="/products/sweaterweather" class="ButtonGroup__Item Button">SHOP NOW</a></div>
+      </div>
+    </div>
+  </div>
+    </div>
+</section>
+<section>
+    <div class="container mt-3 pt-3">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <h3 class="SectionHeader__SubHeading Heading u-h6">
+          About the Cocktail Club
+        </h3>
+              </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <h3 class="SectionHeader__SubHeading Heading u-h6">We'll let you know when the club is hoppin'</h3>                
+
+{%- form 'customer', id: 'footer-newsletter', class: 'Footer__Newsletter Form' -%}
+                  {%- if form.posted_successfully? -%}
+                    <p class="Form__Alert Alert Alert--success">{{ 'footer.newsletter.success' | t }}</p>
+                  {%- else -%}
+                    {%- if form.errors -%}
+                      <p class="Form__Alert Alert Alert--error">{{ form.errors.messages['email'] }}</p>
+                    {%- endif -%}
+					<input type="hidden" name="contact[tags]" value="cocktail club">
+                    <input type="email" name="contact[email]" class="Form__Input" aria-label="{{ 'footer.newsletter.input' | t }}" placeholder="{{ 'footer.newsletter.input' | t }}" required>
+                    <button type="submit" class="Form__Submit Button Button--primary">{{ 'footer.newsletter.submit' | t }}</button>
+                  {%- endif -%}
+                {%- endform -%}
+              </div>
+    </div>
+  </div>
+</section>

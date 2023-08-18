@@ -1,0 +1,114 @@
+  <style>
+      #customSizeDropdown {
+          position: relative;
+          width: auto;
+          border: 1px solid #e3e3e3;
+          padding: 5px 10px;
+          cursor: pointer;
+          margin-top: 15px;
+      }
+      body.customSizeDropdownLoading #customSizeDropdown {
+          cursor: no-drop;
+      }
+      #customSizeDropdown svg {
+          position: absolute;
+          right: 10px;
+          top: 50%;
+          transform: translateY(-50%) rotate(0);
+      }
+      #customSizeDropdown .show-size-dropdown ~ svg {
+          transform: translateY(-50%) rotate(180deg);
+      }
+      #customSizeDropdown .size-dropdown-menu {
+          opacity: 0;
+          visibility: hidden;
+          pointer-events: none;
+          position: absolute;
+          top: 100%;
+          left: -1px;
+          transition: all .3s ease;
+          transform: translateY(5px);
+          display: flex;
+          flex-direction: column;
+          background-color: white;
+          border: 1px solid #e3e3e3;
+          width: calc(100% + 2px);
+      }
+      #customSizeDropdown .size-dropdown-menu button {
+          padding: 5px 10px;
+          width: 100%;
+          text-align: start;
+      }
+      #customSizeDropdown .size-dropdown-menu button:not(:last-child) {
+          border-bottom: 1px solid #e3e3e3;
+      }
+      #customSizeDropdown .Image--lazyLoading {
+          width: 100%;
+          position: absolute;
+          left: 0;
+          top: 0;
+          background: #fbfbfb70;
+          z-index: 111;
+          right: 0;
+          bottom: 0;
+      }
+      body:not(.customSizeDropdownLoading) #customSizeDropdown .size-dropdown-menu.show-size-dropdown {
+          opacity: 1;
+          visibility: visible;
+          pointer-events: auto;
+          transform: translateY(0);
+      }
+  </style>
+  <div id="customSizeDropdown"{% if hidden or product.metafields.custom.product_sizes == blank %} style="display: none;" {% endif %}>
+    <span class="loading"></span>
+    <span class="Image__Loader"></span>
+    <div class="size-dropdown-toggle" id="variant-size-dropdown">
+      Select size
+    </div>
+    <div class="size-dropdown-menu" aria-labelledby="variant-size-dropdown">
+      <script>
+        const product_{{product.id}}_reviews = {{product.metafields.spr.reviews}}
+      </script>
+      <button data-handle="{{product.handle}}" data-id="{{product.id}}" type="button" class="selected" data-quantity="1">
+        {{product.title}}
+      </button>
+      {% if product.metafields.custom.product_sizes != blank %}
+        {% for p in product.metafields.custom.product_sizes.value %}
+          <script>
+            const product_{{p.id}}_reviews = {{p.metafields.spr.reviews}}
+          </script>
+          <button data-handle="{{p.handle}}" data-id="{{p.id}}" type="button" class="{% if p.id == product.id %}selected{% endif %}" data-quantity="1">
+            {{p.title}}
+          </button>
+        {% endfor %}
+      {% endif %}
+    </div>
+    {%- include 'icon' with 'arrow-bottom' -%}
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const dropdownToggle = document.querySelector("#customSizeDropdown .size-dropdown-toggle");
+      const dropdownMenu = document.querySelector("#customSizeDropdown .size-dropdown-menu");
+
+      if (dropdownToggle && dropdownMenu) {
+        dropdownToggle.addEventListener("click", function () {
+          dropdownMenu.classList.toggle("show-size-dropdown");
+        });
+
+        window.addEventListener("click", function (event) {
+          if (!dropdownToggle.contains(event.target)) {
+            dropdownMenu.classList.remove("show-size-dropdown");
+          }
+        });
+      }
+
+      // to dynamically change the button title
+      // dropdownMenu.addEventListener('click', function (event) {
+      //   if (event.target.closest('button')) {
+      //     const buttonText = event.target.textContent;
+      //     dropdownToggle.textContent = buttonText;
+      //     dropdownMenu.classList.remove("show-size-dropdown");
+      //   }
+      // });
+    });
+  </script>

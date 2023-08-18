@@ -1,0 +1,9 @@
+development:
+  password: shptka_a73b157d57e3376995339bbad64abc22
+  theme_id: "136699904254"
+  store: drinkwithco.myshopify.com
+  ignore_files:
+    # - config/settings_data.json
+    # - config/settings_schema.json
+
+    # 134073516279

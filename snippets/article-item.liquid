@@ -1,0 +1,58 @@
+{% assign previewImage = article.metafields.custom.preview_image %}
+<article class="ArticleItem" {% if block %}{{ block.shopify_attributes }}{% endif %}>
+  <div class="card">
+    <a
+      class="ArticleItem__ImageWrapper"
+      {%- if article.image == blank and previewImage == blank -%}data-no-image{% endif %}
+      href="{{ article.url }}">
+      {%- if article.image != blank and previewImage == blank -%}
+        {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: article.image -%}
+        {%- assign image_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        <img
+          class="ArticleItem__Image Image--lazyLoad Image--fadeIn"
+          data-src="{{ image_url }}"
+          data-widths="[{{ supported_sizes }}]"
+          data-sizes="auto"
+          alt="{{ article.image.alt | escape }}">
+
+        <noscript>
+          <img
+            class="ArticleItem__Image"
+            src="{{ article.image | img_url: '600x' }}"
+            alt="{{ article.image.alt | escape }}">
+        </noscript>
+      {% elsif previewImage %}
+        {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: previewImage.value -%}
+        {%- assign image_url = previewImage | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        <img
+          class="ArticleItem__Image Image--lazyLoad Image--fadeIn"
+          data-src="{{ previewImage | image_url }}"
+          data-widths="[{{ supported_sizes }}]"
+          data-sizes="auto"
+          alt="{{ previewImage.value.alt | escape }}">
+
+        <noscript>
+          <img
+            class="ArticleItem__Image"
+            src="{{ previewImage | img_url: '600x' }}"
+            alt="{{ previewImage.value.alt | escape }}">
+        </noscript>
+      {%- endif -%}
+      <h2 class="ArticleItem__Title Heading u-h2">
+        {{ article.title }}
+      </h2>
+    </a>
+    <a class="ArticleItem__Content" href="{{ article.url }}">
+      {%- if section.settings.show_category -%}
+        <span class="ArticleItem__Category Heading u-h6 Text--subdued">{{ article.tags.first }}</span>
+      {%- endif -%}
+      {% if article.metafields.custom.preview_description.value %}
+        {{ article.metafields.custom.preview_description.value | truncate: 150 }}
+      {% else %}
+        {%- unless template.name == 'article' -%}
+          <p class="ArticleItem__Excerpt">{{ article.excerpt_or_content | strip_html | truncate: 150 }}</p>
+        {%- endunless -%}
+      {% endif %}
+    </a>
+  </div>
+</article>

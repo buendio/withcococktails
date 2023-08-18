@@ -1,0 +1,43 @@
+@font-face {
+   font-family: 'Galano';
+   src: url('https://cdn.shopify.com/s/files/1/1802/5145/files/Fontspring-DEMO-galanogrotesquealt-heavy.otf?v=1606316208');
+   font-weight: 700;
+   font-style: normal;
+}
+
+@font-face {
+   font-family: 'Saol';
+   src: url('https://cdn.shopify.com/s/files/1/1802/5145/files/SaolText-Book.otf?v=1606316660');
+   font-weight: 700;
+   font-style: normal;
+}
+
+
+@font-face {
+   font-family: 'FoundersFrotesk';
+   src: {{ 'FoundersFroteskMonoLight.otf' | asset_url }};
+   font-weight: 500;
+   font-style: normal;
+}
+
+@font-face {
+   font-family: 'Inter-Variable';
+   src: {{ 'Inter-VariableFont_slntwght.ttf' | asset_url }};
+   font-weight: 500;
+   font-style: normal;
+}
+
+
+@font-face {
+   font-family: 'PPEditorial';
+   src: {{ 'PPEditorialNew-Ultralight.otf' | asset_url }};
+   font-weight: 500;
+   font-style: normal;
+}
+
+@font-face {
+   font-family: 'PPEditorial';
+   src: {{ 'PPEditorialNew-UltralightItalic.otf' | asset_url }};
+   font-weight: 500;
+   font-style: italic;
+}

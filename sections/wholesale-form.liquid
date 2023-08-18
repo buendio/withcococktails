@@ -1,0 +1,136 @@
+<div class="Container">
+  <header class="PageHeader">
+    <div class="SectionHeader SectionHeader--center">
+      <h1 class="SectionHeader__Heading Heading u-h1">{{ page.title }}</h1>      
+      <h3>Interested in carrying us in your store? Contact us today!</h3>
+
+    </div>
+  </header>
+
+  <div class="PageContent PageContent--narrow">
+    <div class="Rte">
+      {{- page.content -}}      
+      {%- form 'contact', class: 'Form Form--spacingTight' -%}
+        {%- if form.posted_successfully? -%}
+          <p class="Alert Alert--success">{{ 'contact.form.successfully_sent' | t }}</p>
+        {%- endif -%}
+
+        {%- if form.errors -%}
+          <div class="Form__Alert Alert Alert--error">
+            <ul class="Alert__ErrorList">
+              {%- for field in form.errors -%}
+                {%- if field == 'form' -%}
+                  <li class="Alert__ErrorItem">{{ form.errors.messages[field] }}</li>
+                {%- else -%}
+                  <li class="Alert__ErrorItem"><strong>{{ form.errors.translated_fields[field] }}</strong> {{ form.errors.messages[field] }}</li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+<input type="hidden" name="contact[form]" value="Wholesale Form">
+        <div class="Form__Group">
+          <div class="Form__Item">
+            <input type="text" class="Form__Input" name="contact[name]" aria-label="YourName" placeholder="Your Name" required>
+            <label class="Form__FloatingLabel">Your Name</label>
+          </div>
+
+          <div class="Form__Item">
+            <input type="text" class="Form__Input" name="contact[companyname]" aria-label="CompanyName" placeholder="Company Name" required>
+            <label class="Form__FloatingLabel">Company Name</label>
+          </div>
+        </div>
+      
+        <div class="Form__Group">
+          <div class="Form__Item">
+            <input type="email" class="Form__Input" name="contact[email]" aria-label="Email" placeholder="E-mail" required>
+            <label class="Form__FloatingLabel">E-mail</label>
+          </div>
+          <div class="Form__Item">
+            <input type="tel" class="Form__Input" name="contact[phone]" aria-label="Phone" placeholder="Phone" required >
+            <label class="Form__FloatingLabel">Phone</label>
+          </div>       
+        </div>
+
+<div class="Form__Group">
+                    <div class="Form__Item">
+            <input type="text" class="Form__Input" name="contact[address]" aria-label="Address" placeholder="Address" required>
+            <label class="Form__FloatingLabel">Address</label>
+          </div>
+        </div>
+
+                    <div class="Form__Group">
+          <div class="Form__Item">
+            <input type="text" class="Form__Input" name="contact[address2]" aria-label="Address2" placeholder="Address 2" required>
+            <label class="Form__FloatingLabel">Address 2</label>
+          </div>
+<div class="Form__Item">
+            <input type="text" class="Form__Input" name="contact[city]" aria-label="City" placeholder="City" required>
+            <label class="Form__FloatingLabel">City</label>
+          </div>
+
+        </div>
+      <div class="Form__Group">
+          <div class="Form__Item">
+            <input type="text" class="Form__Input" name="contact[state]" aria-label="State" placeholder="State" required>
+            <label class="Form__FloatingLabel">State</label>
+          </div>
+<div class="Form__Item">
+            <input type="text" class="Form__Input" name="contact[zip]" aria-label="Zip" placeholder="Zip" required>
+            <label class="Form__FloatingLabel">Zip</label>
+          </div>
+
+        </div>
+      <div class="Form__Group">
+          <div class="Form__Item">
+                  <select name="contact[storetype]" class="Form__Input" aria-label="store-type" placeholder="Type of Store" required>
+                     <option value="brickmortar">Brick & Mortar</option>
+                     <option value="online">Online</option>
+                     <option value="both">Both</option>
+             </select>
+            <label class="Form__FloatingLabel">Type of Store</label>
+          </div>
+			<div class="Form__Item">
+            <input type="text" class="Form__Input" name="contact[website]" aria-label="website" placeholder="Website">
+            <label class="Form__FloatingLabel">Website</label>
+          </div>
+
+        </div>
+        <div class="Form__Group">
+          <div class="Form__Item">
+            <input type="text" class="Form__Input" name="contact[instagram]" aria-label="instagram" placeholder="Instagram" required>
+            <label class="Form__FloatingLabel">Instagram</label>
+          </div>
+                    <div class="Form__Item">
+          </div>
+        </div>
+        <div class="Form__Item">
+          <textarea name="contact[body]" cols="30" rows="10" class="Form__Textarea" aria-label="{{ 'contact.form.message' | t }}" placeholder="{{ 'contact.form.message' | t }}" required></textarea>
+          <label class="Form__FloatingLabel">{{ 'contact.form.message' | t }}</label>
+        </div>
+
+        <button type="submit" class="Form__Submit Button Button--primary Button--full">{{ 'contact.form.submit' | t }}</button>
+      {%- endform -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Become a Retailer",
+  "settings": [{
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "1200 x 1200px .png recommended"
+    }],
+  "blocks": []
+}
+{% endschema %}
+
+<style>
+  input[type="checkbox"]
+  {
+   margin-right:5px; 
+  }
+</style>

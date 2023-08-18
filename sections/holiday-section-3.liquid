@@ -1,0 +1,66 @@
+{%- if section.settings.layout_mode == 'carousel' -%}
+  {%- capture flickity_options -%}
+  {
+    "prevNextButtons": true,
+    "pageDots": false,
+    "wrapAround": false,
+    "contain": true,
+    "cellAlign": "center",
+    "watchCSS": true,
+    "dragThreshold": 8,
+    "groupCells": true,
+    "arrowShape": {"x0": 20, "x1": 60, "y1": 40, "x2": 60, "y2": 35, "x3": 25}
+  }
+  {%- endcapture -%}
+{%- endif -%}
+
+{%- capture section_settings -%}
+{
+  "layout": {{ section.settings.layout_mode | json }}
+}
+{%- endcapture -%}
+
+<section class="Section Section--spacingNormal" data-section-id="{{ section.id }}" data-section-type="featured-collections" data-settings='{{ section_settings }}'>
+              <div class="FlexboxIeFix">
+        <header class="PageHeader PageHeader--withBackground" style="background: url('https://cdn.shopify.com/s/files/1/1802/5145/files/WithCoStock-3-2.jpg?v=1606755400'); background-size: cover;">
+          <div class="PageHeader__ImageWrapper Image--lazyLoad Image--fadeIn Image--contrast"
+               data-optimumx="1.2"
+               data-bgset="{{ 'WithCoStock-2-2.jpg' | asset_img_url: 'x600' }} 600w, {{ 'WithCoStock-2-2.jpg' | asset_img_url: '800x' }} 800w, {{ 'WithCoStock-2-2.jpg' | asset_img_url: '1200x' }} 1200w, {{ 'WithCoStock-2-2.jpg' | asset_img_url: '1400x' }} 1400w, {{ 'WithCoStock-2-2.jpg' | asset_img_url: '1600x' }} 1600w">
+          </div>
+
+          <div class="Container">
+            <div class="SectionHeader SectionHeader--center">
+              <h1 class="SectionHeader__Heading Heading u-h1">WithCo Services</h1>
+            </div>
+          </div>
+        </header>
+        </div>
+  <div class="TabPanel"aria-hidden="false" role="tabpanel">
+      <div class="ProductListWrapper">
+<div class="ProductList ProductList--grid ProductList--removeMargin Grid" data-mobile-count="2" data-desktop-count="2">
+              <div class="Grid__Cell 1/1--phone 1/1--tablet 1/2--lap-and-up">
+                {%- include 'virtual-happy-hour-product' -%}
+                </div>
+                <div class="Grid__Cell 1/1--phone 1/1--tablet 1/2--lap-and-up">
+                {%- include 'bulk-order-product' -%}
+                </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Holiday Collection 3",
+  "class": "shopify-section--bordered" ,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Sub-heading",
+      "default": "Services Collection 2"
+    }
+	]
+}
+{% endschema %}

@@ -1,0 +1,189 @@
+<style>
+    form#{{section.id}}{
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: white;
+        padding: 3rem;
+        position: relative;
+        z-index: 999;
+        transition: visibility ease .3s;
+        visibility:hidden;
+    }
+    form#{{section.id}} .close{
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 40px;
+        height: 40px;
+        font-size: 30px;
+         cursor: pointer;
+    }
+    form#{{section.id}} .close:after{
+        display: inline-block;
+        content: "\00d7";
+    }
+    form#{{section.id}} .PageHeader{
+        margin: 20px 0 !important;
+    }
+    .form-modal-container{
+        position: absolute;
+        top: 0;
+        display: flex;
+        align-items: center;
+        left: -300%;
+        bottom: 0;
+        background-color: transparent;
+        z-index: 999;
+         background: rgb(0,0,0,0);
+         transition: background ease .3s;
+    }
+    .show-contact-modal form#{{section.id}}{
+        visibility:visible;
+         transition: background ease .3s;
+    }
+    .show-contact-modal .form-modal-container{
+        position: fixed !important;
+         left: 0 !important;
+         right:0 !important;
+        background: rgb(0,0,0,.7);
+        transition: background ease .3s;
+    }
+</style>
+<header class="SectionHeader SectionHeader--center">
+   
+    {% if section.settings.header %}
+         <div class="Container">
+            <h2 class="SectionHeader__Heading Heading u-h1">
+                {{section.settings.header}}
+            </h2>
+        </div>
+    {% endif %}
+    
+   {% if section.settings.sub_header %}
+         <div class="Container">
+            <h3 class="SectionHeader__Heading Heading u-h1">
+                {{section.settings.sub_header}}
+            </h3>
+        </div>
+   {% endif %}
+   {% if section.settings.text %}
+         <div class="Container FeatureText">
+            <p class="SectionHeader__Description Rte">
+                {{section.settings.text}}
+            </p>
+        </div>
+   {% endif %}
+    {% if section.settings.button_text != blank %}
+        <div class="Container">
+            <a href="{{section.settings.url}}" class="ProductItem__ViewButton Button Button--secondary">{{section.settings.button_text}}</a>
+        </div>
+        {% if section.settings.url contains 'modal' %}       
+            <div class="form-modal-container">
+                {%- form 'contact', class: 'Form Form--spacingTight Form--modal', id: section.id -%}
+                   <header class="PageHeader">
+                        <div class="SectionHeader SectionHeader--center">
+                            <h1 class="SectionHeader__Heading Heading u-h1">Bulk Gifting</h1>
+                        </div>
+                    </header>
+                    {%- if form.posted_successfully? -%}
+                        <p class="Alert Alert--success">{{ 'contact.form.successfully_sent' | t }}</p>
+                    {%- endif -%}
+
+                    {%- if form.errors -%}
+                        <div class="Form__Alert Alert Alert--error">
+                            <ul class="Alert__ErrorList">
+                                {%- for field in form.errors -%}
+                                {%- if field == 'form' -%}
+                                    <li class="Alert__ErrorItem">{{ form.errors.messages[field] }}</li>
+                                {%- else -%}
+                                    <li class="Alert__ErrorItem"><strong>{{ form.errors.translated_fields[field] }}</strong> {{ form.errors.messages[field] }}</li>
+                                {%- endif -%}
+                                {%- endfor -%}
+                            </ul>
+                        </div>
+                    {%- endif -%}
+
+                    <input type="hidden" class="Form__Input" name="contact[subject]" aria-label="{{ 'contact.form.subject' | t }}" required value="BULK GIFTING">
+                    <div class="Form__Item">
+                        <div class="Form__Item">
+                            <input type="text" class="Form__Input" name="contact[name]" aria-label="{{ 'contact.form.name' | t }}" placeholder="{{ 'contact.form.name' | t }}" required {% if customer %}value="{{ customer.name }}"{% endif %}>
+                            <label class="Form__FloatingLabel">{{ 'contact.form.name' | t }}</label>
+                        </div>
+                        <div class="Form__Item">
+                            <input type="email" class="Form__Input" name="contact[email]" aria-label="{{ 'contact.form.email' | t }}" placeholder="{{ 'contact.form.email' | t }}" required {% if customer %}value="{{ customer.email }}"{% endif %}>
+                            <label class="Form__FloatingLabel">{{ 'contact.form.email' | t }}</label>
+                        </div>
+                    </div>
+                    <div class="Form__Item">
+                        <textarea name="contact[body]" cols="30" rows="10" class="Form__Textarea" aria-label="{{ 'contact.form.message' | t }}" placeholder="{{ 'contact.form.message' | t }}" required></textarea>
+                        <label class="Form__FloatingLabel">{{ 'contact.form.message' | t }}</label>
+                    </div>
+
+                    <button type="submit" class="Form__Submit Button Button--primary Button--full">{{ 'contact.form.submit' | t }}</button>
+                    <div class="close"></div>
+                {%- endform -%}
+            </div>
+            <script>
+                window.addEventListener('load', () => {
+                    //Things
+                    const openModalItems = [document.querySelector('.form-modal-container .close'), document.querySelector('#shopify-section-{{section.id}} a.Button')];
+
+                    //Events
+                        openModalItems.forEach( item => {
+                            item.addEventListener('click', (e) => {
+                                e.preventDefault();
+
+                                document.querySelector('body').classList.toggle('show-contact-modal');
+                            })
+                        });
+                    //Functions
+
+                    //Actions
+
+                    //Tests
+                });
+            </script>
+        {% endif %}
+    {% endif %}
+</header>
+{% schema %}
+    {
+        "name": "Header/Text and Button",
+        "class": "Section Section--spacingNormal",
+        "settings": [
+            {
+                "type": "text",
+                "id": "header",
+                "label": "Header"
+            },
+            {
+                "type": "text",
+                "id": "sub_header",
+                "label": "Subheader"
+            },
+            {
+                "type": "text",
+                "id": "text",
+                "label": "Text"
+            },
+            {
+                "type": "text",
+                "id": "button_text",
+                "label": "Button Text"
+            },
+            {
+                "type": "url",
+                "id": "url",
+                "label": "Button Link"
+            }
+        ],
+        "presets": [
+            {
+                "name": "Header/Text and Button"
+            }
+        ]
+    }
+{% endschema %}
+
+{% javascript %}
+{% endjavascript %}

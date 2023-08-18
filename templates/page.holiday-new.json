@@ -1,0 +1,287 @@
+{
+  "sections": {
+    "slideShow": {
+      "type": "slideshow",
+      "blocks": {
+        "f0bf64aa-26ed-4899-9213-9651c52fb085": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Screen_Shot_2023-01-31_at_8.12.01_PM.png",
+            "apply_overlay": true,
+            "lighttext": true,
+            "splitbanner": false,
+            "splitbanner_background": "#ffffff",
+            "content_position": "middleCenter",
+            "subheading": "Flowers are overrated. Give them WithCo. Made with rose petals and buds.",
+            "title": "Valentine's Day Shop",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "f0bf64aa-26ed-4899-9213-9651c52fb085"
+      ],
+      "settings": {
+        "show_fullscreen": false,
+        "show_arrow": false,
+        "autoplay": true,
+        "cycle_speed": 5,
+        "text_color": "#ffffff",
+        "button_color": "#363636",
+        "button_background": "#ffffff"
+      }
+    },
+    "96f2c8ca-64d0-41e5-9b0d-3387a5faad05": {
+      "type": "headings-text-button",
+      "settings": {
+        "header": "",
+        "sub_header": "",
+        "text": "We've created the perfect Valentine's Day Shop for everyone on your list. Shop our mixes made with fresh juices and real botanicals. Flowers are the go-to but this year, offer them something they will love.",
+        "button_text": "",
+        "url": ""
+      }
+    },
+    "2be9b65a-aa76-42c2-ab16-e781bc9aea09": {
+      "type": "featured-content-grid",
+      "blocks": {
+        "a84e3852-c201-4529-a525-308f9b6228ea": {
+          "type": "featuredItem",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/lifestyle-4_3_1600x_96f7341b-a65a-4572-b5ea-a2ca4696769b.webp",
+            "title": "Bouquet",
+            "text": "The bottle packed with flowers already. Made with dried lavender, fresh lemon, and rose petals and buds. Pairs perfectly with gin, vodka, tequila, champagne, or soda water.",
+            "button_text": "View Product",
+            "item_link": "shopify:\/\/products\/bouquet"
+          }
+        },
+        "81e7f364-ed21-4762-bc95-f5a51f6d6ccf": {
+          "type": "featuredItem",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/lifestyle_9_1600x_2db06afc-87cc-401d-93f9-b5c96b3daa3d.webp",
+            "title": "Hey Girl",
+            "text": "Cool, fresh cucumber with muddled mint and lime make the perfect drink for everything. Pairs with vodka, gin, tequila, rum or soda water.",
+            "button_text": "View Product",
+            "item_link": "shopify:\/\/products\/hey-girl"
+          }
+        },
+        "596e4d44-3e3e-4405-bab4-022fb7d3d04d": {
+          "type": "featuredItem",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/lifestyle-3_2_1600x_43f1e94b-f1ab-4f16-9eca-82454d703727.webp",
+            "title": "Ellis Old Fashioned",
+            "text": "Have a whiskey or bourbon lover in your life? Get them this bar cart essential that has been named Liqour.com's Best Old Fashioned for 3 years.",
+            "button_text": "View Product",
+            "item_link": "shopify:\/\/products\/ellis-old-fashioned"
+          }
+        },
+        "345e45d6-ea75-4add-80cc-677e19525252": {
+          "type": "featuredItem",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/IMG_7679.jpg",
+            "title": "SweaterWeather",
+            "text": "Chilly nights are still here and SweaterWeather is the coziest way to snuggle up and get warm. Pairs with any whiskey, bourbon or rum.",
+            "button_text": "View Product",
+            "item_link": "shopify:\/\/products\/sweaterweather"
+          }
+        },
+        "d292c029-2ce2-4c8a-9e4a-84a44c6f008f": {
+          "type": "featuredItem",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/DSC0715.jpg",
+            "title": "Looking for more options?",
+            "text": "Click below to explore our entire line up of fresh ingredient mixes, bartools, and glassware options to gift this year.",
+            "button_text": "EXPLORE MORE",
+            "item_link": "shopify:\/\/collections\/all"
+          }
+        },
+        "5b2dd870-954a-4941-8e12-be1af686551f": {
+          "type": "featuredItem",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/custom_resized_78601a45-da3d-4b06-9fde-6d071e8ea667.jpg",
+            "title": "Looking for Mocktail Options?",
+            "text": "If you are still practicing Dry January or maybe you're living a sober lifestyle, we have a mocktail kit that is perfect for anyone on your list who isn't drinking alcohol.",
+            "button_text": "",
+            "item_link": "shopify:\/\/products\/the-mocktail-kit"
+          }
+        }
+      },
+      "block_order": [
+        "a84e3852-c201-4529-a525-308f9b6228ea",
+        "81e7f364-ed21-4762-bc95-f5a51f6d6ccf",
+        "596e4d44-3e3e-4405-bab4-022fb7d3d04d",
+        "345e45d6-ea75-4add-80cc-677e19525252",
+        "d292c029-2ce2-4c8a-9e4a-84a44c6f008f",
+        "5b2dd870-954a-4941-8e12-be1af686551f"
+      ],
+      "settings": {
+        "title": "",
+        "grid_mobile_items_per_row": "1",
+        "grid_tablet_items_per_row": "1",
+        "grid_desktop_items_per_row": 2
+      }
+    },
+    "bd7aad83-87f5-47f4-bffe-4b50c06cf8d5": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "section_size": "large",
+        "image": "shopify:\/\/shop_images\/Screen_Shot_2023-01-31_at_8.10.30_PM.png",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30,
+        "subheading": "",
+        "title": "\"When it comes to Valentine's Day I know my wife expects a bottle of WithCo.\" - Will Freeman",
+        "content": ""
+      }
+    },
+    "c999e27f-fb22-446c-a812-f65d81a185d3": {
+      "type": "featured-content-grid",
+      "disabled": true,
+      "blocks": {
+        "90369c97-c0e6-4748-8c0f-82a817c91a3e": {
+          "type": "featuredItem",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/lifestyle-3_10.jpg",
+            "title": "Ellis Old Fashioned - $16 (reg. $20)",
+            "text": "Our Ellis Old Fashioned features ingredients that naturally show off the flavors of whiskey, drawing deeper appreciation for the spirit. Makes 32 Cocktails per bottle.",
+            "button_text": "",
+            "item_link": "shopify:\/\/products\/ellis-old-fashioned"
+          }
+        },
+        "5a25143b-38af-42bb-8e4f-4e3c7cf41e67": {
+          "type": "featuredItem",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/BUTC2142.jpg",
+            "title": "Cocktail Club $40\/mo",
+            "text": "Think wine club meets fresh ingredient cocktails. Enjoy exclusive member discounts, free shipping, and early access to new flavors",
+            "button_text": "View Product",
+            "item_link": "shopify:\/\/pages\/new-cocktails-club-page"
+          }
+        },
+        "c249dfa2-4dd8-48ab-810b-8e2aa3f8d9ef": {
+          "type": "featuredItem",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/NH_WithCo_09.jpg",
+            "title": "SweaterWeather - $16 (reg. $20)",
+            "text": "Our apple cider-esque cocktail boasts hand sourced ingredients, comforting aromas and subtle spices that will make this a family tradition worth keeping.",
+            "button_text": "View Product",
+            "item_link": "shopify:\/\/products\/sweaterweather"
+          }
+        }
+      },
+      "block_order": [
+        "90369c97-c0e6-4748-8c0f-82a817c91a3e",
+        "5a25143b-38af-42bb-8e4f-4e3c7cf41e67",
+        "c249dfa2-4dd8-48ab-810b-8e2aa3f8d9ef"
+      ],
+      "settings": {
+        "title": "Our Staff's Favorite Items",
+        "grid_mobile_items_per_row": "1",
+        "grid_tablet_items_per_row": "1",
+        "grid_desktop_items_per_row": 3
+      }
+    },
+    "78a0c9d5-4ce6-443e-b2f9-36e2173b1beb": {
+      "type": "cocktail-club-perks",
+      "disabled": true,
+      "blocks": {
+        "template--16587426857214__78a0c9d5-4ce6-443e-b2f9-36e2173b1beb-1667861824b50e7c1c-0": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "You Pick It",
+            "description": "<p>Send us your recipient list. From 5 to 5,000, we've got you covered.<\/p>"
+          }
+        },
+        "template--16587426857214__78a0c9d5-4ce6-443e-b2f9-36e2173b1beb-1667861824b50e7c1c-1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "We Ship It",
+            "description": "<p>We'll pick and pack each order and send it to  recipients on your behalf.<\/p>"
+          }
+        },
+        "template--16587426857214__78a0c9d5-4ce6-443e-b2f9-36e2173b1beb-1667861824b50e7c1c-2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Sit Back and Relax",
+            "description": "<p>Enjoy the holidays and let us do the rest. <\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--16587426857214__78a0c9d5-4ce6-443e-b2f9-36e2173b1beb-1667861824b50e7c1c-0",
+        "template--16587426857214__78a0c9d5-4ce6-443e-b2f9-36e2173b1beb-1667861824b50e7c1c-1",
+        "template--16587426857214__78a0c9d5-4ce6-443e-b2f9-36e2173b1beb-1667861824b50e7c1c-2"
+      ],
+      "settings": {
+        "title": "Bulk Gifting Options",
+        "autoplay": true,
+        "Testimonial_Display_Type": "grid",
+        "cycle_speed": 5,
+        "background": "#3b4e44",
+        "text_color": "#ffffff"
+      }
+    },
+    "18c33fd8-57bc-45d2-abb7-b05e02280eb1": {
+      "type": "headings-text-button",
+      "settings": {
+        "header": "Need help making a decision?",
+        "sub_header": "",
+        "text": "Let us help! You pick it, we’ll ship it.",
+        "button_text": "Let us help",
+        "url": "\/#contact-modal"
+      }
+    },
+    "5c20a256-bd42-46fa-b8ca-16d58d348dec": {
+      "type": "image-with-text-overlay",
+      "disabled": true,
+      "settings": {
+        "section_size": "large",
+        "image": "shopify:\/\/shop_images\/Screen_Shot_2022-09-26_at_10.14.54_AM.png",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30,
+        "subheading": "",
+        "title": "",
+        "content": ""
+      }
+    },
+    "e35c0c99-2ebc-4cb9-89e0-eb60b9dc9a5a": {
+      "type": "Custom-Featured-In",
+      "disabled": true,
+      "blocks": {
+        "template--16587426857214__e35c0c99-2ebc-4cb9-89e0-eb60b9dc9a5a-16680308393a6e8951-0": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title": "",
+            "grid_items_count": 8,
+            "button_text": "View all products"
+          }
+        }
+      },
+      "block_order": [
+        "template--16587426857214__e35c0c99-2ebc-4cb9-89e0-eb60b9dc9a5a-16680308393a6e8951-0"
+      ],
+      "settings": {
+        "title": "Featured In",
+        "layout_mode": "grid",
+        "grid_mobile_items_per_row": "2",
+        "grid_tablet_items_per_row": "1",
+        "grid_desktop_items_per_row": 4
+      }
+    }
+  },
+  "order": [
+    "slideShow",
+    "96f2c8ca-64d0-41e5-9b0d-3387a5faad05",
+    "2be9b65a-aa76-42c2-ab16-e781bc9aea09",
+    "bd7aad83-87f5-47f4-bffe-4b50c06cf8d5",
+    "c999e27f-fb22-446c-a812-f65d81a185d3",
+    "78a0c9d5-4ce6-443e-b2f9-36e2173b1beb",
+    "18c33fd8-57bc-45d2-abb7-b05e02280eb1",
+    "5c20a256-bd42-46fa-b8ca-16d58d348dec",
+    "e35c0c99-2ebc-4cb9-89e0-eb60b9dc9a5a"
+  ]
+}

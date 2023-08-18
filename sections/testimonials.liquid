@@ -1,0 +1,297 @@
+{%- capture flickity_options -%}
+{
+  "prevNextButtons": false,
+  "wrapAround": true,
+  "dragThreshold": 16,
+  "pageDots": {% if section.blocks.size > 1 %}true{% else %}false{% endif %},
+  "autoPlay": {% if section.settings.autoplay %}{{ section.settings.cycle_speed | times: 1000 }}{% else %}false{% endif %}
+}
+{%- endcapture -%}
+
+{%- assign should_show_nav = false -%}
+
+{%- for block in section.blocks -%}
+  {%- if block.settings.logo -%}
+    {%- assign should_show_nav = true -%}
+    {%- break -%}
+  {%- endif -%}
+{%- endfor -%}
+
+
+{% if section.settings.Testimonial_Display_Type == 'carousel' %}
+<section class="Section Section--spacingNormal" style="padding: 40px 0;" id="section-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="testimonials">  
+  {%- if section.settings.title != blank -%}
+      <header class="PageHeader" style="margin-top:0px;">
+      <div class="SectionHeader SectionHeader--center">
+        <h1 class="SectionHeader__Heading Heading u-h1" style="color: {{ section.settings.text_color }}">
+            {{- section.settings.title -}}
+        </h1>
+      </div>
+    </header>
+  {%- endif -%}
+  
+  <div class="TestimonialList {% if should_show_nav %}TestimonialList--withNav{% endif %} Carousel Carousel--fadeIn" data-flickity-config='{{ flickity_options }}'>
+    {%- for block in section.blocks -%}
+      <div id="block-{{ block.id }}" class="Carousel__Cell Testimonial {% if forloop.first %}is-selected{% endif %}" {{ block.shopify_attributes }} data-slide-index="{{ forloop.index0 }}">
+        <div class="Container">
+
+
+          {%- if block.settings.logo != blank -%}
+            <img class="Testimonial__Logo hidden-lap-and-up" src="{{ block.settings.logo | img_url: '300x' }}" alt="{{ block.settings.logo.alt | escape }}">
+          {%- endif -%}
+                    {%- if block.settings.quote != blank -%}
+            <div class="Testimonial__Content">
+              {{ block.settings.quote }}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+
+  {%- if should_show_nav -%}
+    <div class="TestimonialNav hidden-pocket">
+      {%- for block in section.blocks -%}
+        {%- if block.settings.logo != blank -%}
+          <img class="TestimonialNav__Item {% if forloop.first %}is-selected{% endif %}" src="{{ block.settings.logo | img_url: '300x' }}" alt="{{ block.settings.logo.alt | escape }}" data-index="{{ forloop.index0 }}">
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</section>
+{% elsif section.settings.Testimonial_Display_Type == 'grid' %}
+<section class="Section Section--spacingNormal hidden-phone hidden-tablet" id="section-{{ section.id }}" data-section-id="{{ section.id }}"  style="padding: 40px 0;">  
+    {%- if section.settings.title != blank -%}
+      <header class="PageHeader" style="margin-top:0px;">
+      <div class="SectionHeader SectionHeader--center">
+        <h1 class="SectionHeader__Heading Heading u-h1" style="color: {{ section.settings.text_color }}">
+            {{- section.settings.title -}}
+        </h1>
+      </div>
+    </header>
+  {%- endif -%}
+  <div class="" >
+    {%- for block in section.blocks -%}
+      <div id="block-{{ block.id }}" class="Grid__Cell 1/1--phone 1/1--tablet 1/{{ section.blocks.size }}--lap-and-up no-padding" {{ block.shopify_attributes }} >
+        <div class="Container" style="margin-bottom:16px;">
+
+
+          {%- if block.settings.logo != blank -%}
+            <img class="Testimonial__Logo" src="{{ block.settings.logo | img_url: '300x' }}" alt="{{ block.settings.logo.alt | escape }}">
+          {%- endif -%}
+                    {%- if block.settings.quote != blank -%}
+
+                      <div class="Testimonial__Content {{ block.Testimonial_Display_Type }}"  style="font-size:16px;">
+              {{ block.settings.quote }}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% else %}
+<section class="Section Section--spacingNormal hidden-phone hidden-tablet"  style="padding: 40px 0;" id="section-{{ section.id }}" data-section-id="{{ section.id }}">  
+    {%- if section.settings.title != blank -%}
+      <header class="PageHeader" style="margin-top:0px;">
+      <div class="SectionHeader SectionHeader--center">
+        <h1 class="SectionHeader__Heading Heading u-h1" style="color: {{ section.settings.text_color }}">
+            {{- section.settings.title -}}
+        </h1>
+      </div>
+    </header>
+  {%- endif -%}
+  <div class="">
+    {%- for block in section.blocks -%}
+      <div id="block-{{ block.id }}" class="Grid__Cell 1/1--phone 1/1--tablet 1/{{ section.blocks.size }}--lap-and-up no-padding" {{ block.shopify_attributes }} >
+        <div class="Container">
+          <div class="fiveStar" style="text-align:center;">
+           <span class="spr-badge" data-rating="5.0"><span class="spr-starrating spr-badge-starrating"><i class="spr-icon spr-icon-star"></i><i class="spr-icon spr-icon-star"></i><i class="spr-icon spr-icon-star"></i><i class="spr-icon spr-icon-star"></i><i class="spr-icon spr-icon-star"></i></span><span class="spr-badge-caption">10 reviews</span>
+</span>
+          </div>
+          <br/>
+
+          {%- if block.settings.logo != blank -%}
+            <img class="Testimonial__Logo" src="{{ block.settings.logo | img_url: '300x' }}" alt="{{ block.settings.logo.alt | escape }}">
+          {%- endif -%}
+                    {%- if block.settings.quote != blank -%}        
+            <div class="Testimonial__Content">
+              {{ block.settings.quote }}
+            </div>
+          {%- endif -%}
+          <div class="verified-purchase" style="text-align:center; margin-top:5px; font-size:16px;">
+            <p><svg width="12" height="12" viewBox="0 0 16 16" fill="#ffffff" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;margin-right:5px;"><path d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zM6.31 12.21L2.97 8.87l1.41-1.41L6.3 9.38l5.3-5.3 1.41 1.41-6.7 6.72z"></path></svg>Verfied Buyer</p>
+          </div>
+
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+<section class="Section Section--spacingNormal hidden-lap-and-up" id="section-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="testimonials">  
+  {%- if section.settings.title != blank -%}
+      <header class="PageHeader" style="margin-top:0px;">
+      <div class="SectionHeader SectionHeader--center">
+        <h1 class="SectionHeader__Heading Heading u-h1" style="color: {{ section.settings.text_color }}">
+            {{- section.settings.title -}}
+        </h1>
+      </div>
+    </header>
+  {%- endif -%}
+  
+  <div class="TestimonialList {% if should_show_nav %}TestimonialList--withNav{% endif %} Carousel Carousel--fadeIn" data-flickity-config='{{ flickity_options }}'>
+    {%- for block in section.blocks -%}
+      <div id="block-{{ block.id }}" class="Carousel__Cell Testimonial {% if forloop.first %}is-selected{% endif %}" {{ block.shopify_attributes }} data-slide-index="{{ forloop.index0 }}">
+        <div class="Container">
+          <div class="fiveStar" style="text-align:center;">
+           <span class="spr-badge" data-rating="5.0"><span class="spr-starrating spr-badge-starrating"><i class="spr-icon spr-icon-star"></i><i class="spr-icon spr-icon-star"></i><i class="spr-icon spr-icon-star"></i><i class="spr-icon spr-icon-star"></i><i class="spr-icon spr-icon-star"></i></span><span class="spr-badge-caption">10 reviews</span>
+</span>
+          </div>
+          <br/>
+
+          {%- if block.settings.logo != blank -%}
+            <img class="Testimonial__Logo" src="{{ block.settings.logo | img_url: '300x' }}" alt="{{ block.settings.logo.alt | escape }}">
+          {%- endif -%}
+                    {%- if block.settings.quote != blank -%}        
+            <div class="Testimonial__Content">
+              {{ block.settings.quote }}
+            </div>
+          {%- endif -%}
+          <div class="verified-purchase" style="text-align:center; margin-top:5px; font-size:16px;">
+            <p><svg width="12" height="12" viewBox="0 0 16 16" fill="#ffffff" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;margin-right:5px;"><path d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zM6.31 12.21L2.97 8.87l1.41-1.41L6.3 9.38l5.3-5.3 1.41 1.41-6.7 6.72z"></path></svg>Verfied Buyer</p>
+          </div>
+
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+
+  {%- if should_show_nav -%}
+    <div class="TestimonialNav hidden-pocket">
+      {%- for block in section.blocks -%}
+        {%- if block.settings.logo != blank -%}
+          <img class="TestimonialNav__Item {% if forloop.first %}is-selected{% endif %}" src="{{ block.settings.logo | img_url: '300x' }}" alt="{{ block.settings.logo.alt | escape }}" data-index="{{ forloop.index0 }}">
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</section>
+{% endif %}
+
+<style>
+  #section-{{ section.id }} {
+    color: {{ section.settings.text_color }};
+    background: {{ section.settings.background }};
+  }
+
+  #section-{{ section.id }} .flickity-page-dots .dot:not(.is-selected) {
+    border-color: {{section.settings.background | color_mix: section.settings.text_color, 85}};
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "class": "shopify-section--bordered",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Header",
+      "default": "Title"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Auto rotate between testimonials",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "Testimonial_Display_Type",
+      "label": "Display",
+      "options": [
+        {
+          "value": "grid",
+          "label": "grid"
+        },
+        {
+          "value": "carousel",
+          "label": "carousel"
+        },
+        {
+          "value": "Testimonials",
+          "label": "Testimonials"
+        }
+      ],
+      "default": "grid"
+    },
+    {
+      "type": "range",
+      "id": "cycle_speed",
+      "min": 3,
+      "max": 8,
+      "step": 1,
+      "unit": "sec",
+      "label": "Change testimonials every",
+      "default": 5
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background",
+      "default": "#eaeaea"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#1c1b1b"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo",
+          "info": "340 x 80px .jpg recommended"
+        },
+        {
+          "type": "richtext",
+          "id": "quote",
+          "label": "Quote",
+          "default": "<p>Share what your customers are saying about your products, your company...</p>",
+          "info": "For best results, keep the word count consistent in each quote."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Text",
+      "name": "Testimonials",
+      "settings": {},
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {}
+        },
+        {
+          "type": "testimonial",
+          "settings": {}
+        },
+        {
+          "type": "testimonial",
+          "settings": {}
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
